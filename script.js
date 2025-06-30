@@ -1,38 +1,46 @@
-// const processArray = (array, callback) => {
+console.log(1);
+// Створіть функцію processArray(array, callback), яка приймає масив та 
+// функцію-колбек. Викличте processArray з різними масивами та функціями-колбеками, щоб виконати наступні операції:
 
-// };
-// const getSum = function(arr) {return arr.reduce((acc, curr) => acc + curr)}
-// const getMin = function(arr) {return Math.min(...arr)}
-// const getMax = function(arr) {return Math.max(...arr)}
+// Порахувати суму всіх елементів масиву.
+// Знайти мінімальний елемент масиву.
+// Знайти максимальний елемент масиву.
+// Перепишіть колбек-функції на стрілки
 
-const numbers = [3, 7, 1, 9, 4];
+
+
 const processArray = (array, callback) => {
-    let result = callback(array);
-    return result;
-}
+ return callback(array)
+};
 
-const getSum = function(arr) {
-    return arr.result((acc, curr) => acc + curr)
-}
-const getMin = function(arr) {
-    return Math.min(...arr)
-}
-const getMax = function(arr) {
-    return Math.max(...arr)
-}
+const getSum = arr => arr.reduce((acc, curr) => acc + curr)
+const getMin = arr => Math.min(...arr)
+const getMax = arr => Math.max(...arr)
 
-console.log("Сума:", processArray(numbers, getSum));
-console.log("Мінімальне значення:", processArray(numbers, getMin));
-console.log("Максимальне значення:", processArray(numbers, getMax));
+const num = [1, 2, 4, 123]
+
+console.log(`Сумма: ${processArray(num, getSum)}`);
+console.log(`Мінімальний елемент масиву: ${processArray(num, getMin)}`);
+console.log(`Максимальний елемент масиву: ${processArray(num, getMax)}`);
+
+console.log(2);
+// 2. Створіть функцію operate(a, b, callback), яка приймає два числа 
+// та колбек для виконання операції над ними. Використайте її для виконання наступних операцій:
+
+// Додавання.
+// Віднімання.
+// Множення.
+// Ділення.
+// Перепишіть колбеки на стрілкові функції
 
 
 
 const operate = (a, b, callback) => {
-    let result = callback(a, b);
-    return result;
-}
+return callback(a, b)
+};
 
-console.log(operate(20, 7, function(a, b) { return a - b}));
-console.log(operate(8, 5, function(a, b) { return a + b}));
-console.log(operate(2, 3, function(a, b) { return a * b}));
-console.log(operate(24, 6, function(a, b) { return a / b}));
+// Виклик функції з різними операціями
+console.log(operate(10, 5, (a, b) => a - b)); // Віднімання
+console.log(operate(10, 5, (a, b) => a + b)); // Додавання
+console.log(operate(10, 5, (a, b) => a * b)); // Множення
+console.log(operate(10, 0, (a, b) => a / b)); // Ділення
