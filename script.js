@@ -17,9 +17,9 @@ const isLarge = num => num > 10;
 const isShort = word => word.length <= 3;
 
 
-console.log('Парних чисел:', countItems(numbers, isEven));      // 3
-console.log('Чисел більше 10:', countItems(numbers, isLarge));  // 3
-console.log('Коротких слів:', countItems(words, isShort));      // 1
+console.log('Парних чисел:', countItems(numbers, isEven));      
+console.log('Чисел більше 10:', countItems(numbers, isLarge));  
+console.log('Коротких слів:', countItems(words, isShort));    
 
 const calculate = (a, b, operation) => operation(a, b);
 
@@ -33,12 +33,10 @@ const divide = (a, b) => {
 };
 
 
-console.log(calculate(10, 5, add));      // 15
-console.log(calculate(10, 5, subtract)); // 5
-console.log(calculate(10, 5, multiply)); // 50
-console.log(calculate(10, 5, divide));   // 2
-console.log(calculate(10, 0, divide));   // Помилка: ділення на нуль
-
+console.log(calculate(10, 5, add));      
+console.log(calculate(10, 5, subtract)); 
+console.log(calculate(10, 5, multiply)); 
+console.log(calculate(10, 0, divide));   
 
 function repeatMessage(times, messageCreator) {
   for (let i = 0; i < times; i++) {
