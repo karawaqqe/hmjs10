@@ -1,46 +1,54 @@
-console.log(1);
-// Створіть функцію processArray(array, callback), яка приймає масив та 
-// функцію-колбек. Викличте processArray з різними масивами та функціями-колбеками, щоб виконати наступні операції:
+const numbers = [1, 5, 8, 12, 3, 15, 7, 20];
+const words = ['кіт', 'собака', 'миша', 'папуга', 'хомяк'];
 
-// Порахувати суму всіх елементів масиву.
-// Знайти мінімальний елемент масиву.
-// Знайти максимальний елемент масиву.
-// Перепишіть колбек-функції на стрілки
+function countItems(array, condition) {
+  let count = 0;
+  for (const item of array) {
+    if (condition(item)) {
+      count++;
+    }
+  }
+  return count;
+}
 
 
+const isEven = num => num % 2 === 0;
+const isLarge = num => num > 10;
+const isShort = word => word.length <= 3;
 
-const processArray = (array, callback) => {
- return callback(array)
+
+console.log('Парних чисел:', countItems(numbers, isEven));      // 3
+console.log('Чисел більше 10:', countItems(numbers, isLarge));  // 3
+console.log('Коротких слів:', countItems(words, isShort));      // 1
+
+const calculate = (a, b, operation) => operation(a, b);
+
+
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => {
+  if (b === 0) return 'Помилка: ділення на нуль';
+  return a / b;
 };
 
-const getSum = arr => arr.reduce((acc, curr) => acc + curr)
-const getMin = arr => Math.min(...arr)
-const getMax = arr => Math.max(...arr)
 
-const num = [1, 2, 4, 123]
-
-console.log(`Сумма: ${processArray(num, getSum)}`);
-console.log(`Мінімальний елемент масиву: ${processArray(num, getMin)}`);
-console.log(`Максимальний елемент масиву: ${processArray(num, getMax)}`);
-
-console.log(2);
-// 2. Створіть функцію operate(a, b, callback), яка приймає два числа 
-// та колбек для виконання операції над ними. Використайте її для виконання наступних операцій:
-
-// Додавання.
-// Віднімання.
-// Множення.
-// Ділення.
-// Перепишіть колбеки на стрілкові функції
+console.log(calculate(10, 5, add));      // 15
+console.log(calculate(10, 5, subtract)); // 5
+console.log(calculate(10, 5, multiply)); // 50
+console.log(calculate(10, 5, divide));   // 2
+console.log(calculate(10, 0, divide));   // Помилка: ділення на нуль
 
 
+function repeatMessage(times, messageCreator) {
+  for (let i = 0; i < times; i++) {
+    console.log(messageCreator(i));
+  }
+}
 
-const operate = (a, b, callback) => {
-return callback(a, b)
-};
 
-// Виклик функції з різними операціями
-console.log(operate(10, 5, (a, b) => a - b)); // Віднімання
-console.log(operate(10, 5, (a, b) => a + b)); // Додавання
-console.log(operate(10, 5, (a, b) => a * b)); // Множення
-console.log(operate(10, 0, (a, b) => a / b)); // Ділення
+const helloMessage = i => `Повідомлення ${i + 1}: Привіт!`;
+const countdownMessage = i => `Залишилось: ${5 - i} кроків`;
+
+repeatMessage(5, helloMessage);
+repeatMessage(5, countdownMessage);
